@@ -1,0 +1,24 @@
+/* モバイルファーストの場合 */
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  background-color: #f9f9f9;
+}
+
+/* タブレットサイズ */
+@media (min-width: 600px) {
+
+}
+
+/* PCサイズ */
+@media (min-width: 768px) {
+
+}
+
+/* ユーザーのダークモードを反映させるコード */
+/* @media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+} */
