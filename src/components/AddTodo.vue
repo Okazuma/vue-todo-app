@@ -8,7 +8,7 @@
 
 
 <script setup>
-import { ref , defineEmits } from "vue"
+import { ref, defineEmits } from "vue"
 
 const newTodo = ref('')
 
