@@ -2,6 +2,7 @@
         <li class="todo__list">
             <span class="todo__title">{{ todo.text }}</span>
             <button class="delete__button" @click="handleRemove">削除</button>
+            <button class="edit__button" @click="editingTodo"></button>
         </li>
 </template>
 
@@ -16,13 +17,19 @@ const props = defineProps({
 })
 
 // 親に削除イベントを通知する
-const emit = defineEmits(['remove'])
+const emit = defineEmits(['remove','edit'])
+
 function handleRemove() {
     if (confirm('削除しますか？')) {
         // 親コンポーネントに 'remove'イベントを発火と削除対象のidを渡す
         emit('remove',props.todo.id)
     }
 }
+
+function editingTodo() {
+    emit('edit',props.todo.id);
+}
+
 </script>
 
 

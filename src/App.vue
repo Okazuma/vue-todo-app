@@ -3,8 +3,13 @@ import { ref } from "vue"
 import TheHeader from '/src/Components/TheHeader.vue'
 import AddTodo from '/src/Components/AddTodo.vue'
 import TodoList from '/src/Components/TodoList.vue'
+import EditModal from '/src/Components/EditModal.vue'
+
 
 const todoList = ref([])
+const isModalOpen = ref(false)
+const selectedTodo = ref(null)
+
 let id = 1
 
 // 新しいタスクを追加するメソッド（イベントハンドラー）
@@ -15,15 +20,51 @@ function handleAddNewTodo(newTodo) {
 function handleUpdateTodoList(newTodoList) {
   todoList.value = newTodoList;
 }
-</script>
 
+// モーダルを開く
+function openModal(todoId) {
+  const todo = todoList.value.find(todo => todo.id === todoId);
+  selectedTodo.value = { ...todo }; // 編集する Todo をセット
+  isModalOpen.value = true;
+}
+
+// モーダルを閉じる
+function closeModal() {
+  isModalOpen.value = false;
+  selectedTodo.value = null;
+}
+
+// 編集された Todo を保存
+function saveTodo(updatedTodo) {
+  // todoList から更新した Todo を検索
+  const index = todoList.value.findIndex(todo => todo.id === updatedTodo.id);
+  if (index !== -1) {
+    // Todo を更新
+    todoList.value[index] = updatedTodo;
+  }
+  console.log('保存されたTodo:', updatedTodo);
+      isModalOpen.value = false;
+}
+</script>
 
 
 <template>
   <div>
     <TheHeader />
     <AddTodo @addTodo="handleAddNewTodo"/>
-    <TodoList :todoList="todoList" @updateTodoList="handleUpdateTodoList"/>
+
+    <TodoList
+    :todoList="todoList" @updateTodoList="handleUpdateTodoList"
+    @edit="openModal"
+    @close="closeModal"
+    @save="saveTodo"/>
+
+    <EditModal
+    v-if="isModalOpen"
+    :key="selectedTodo?.id"
+    :todo="selectedTodo"
+    @close="closeModal"
+    @save="saveTodo" />
   </div>
 </template>
 

@@ -3,7 +3,8 @@
             <TodoItem v-for="todo in todoList"
             :key="todo.id"
             :todo="todo"
-            @remove="handleRemoveTodo(todo.id)"/>
+            @remove="handleRemoveTodo(todo.id)"
+            @edit="editTodo(todo.id)"/>
         </ul>
 </template>
 
@@ -21,11 +22,16 @@ const props = defineProps({
     }
 })
 // 親に todoList を更新してもらう
-const emit = defineEmits(['updateTodoList']);
+const emit = defineEmits(['updateTodoList', 'edit']);
+
 function handleRemoveTodo(todoId) {
   // 親に新しいtodoListを渡す
     const newTodoList = props.todoList.filter(todo => todo.id !== todoId);
     emit('updateTodoList', newTodoList);
+}
+
+function editTodo(todoId) {
+    emit('edit', todoId);
 }
 </script>
 
