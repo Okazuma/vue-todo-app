@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <h1 class="header__title">Vue3 TodoApp</h1>
     </header>
 </template>
@@ -13,14 +13,11 @@
 
 
 <style scoped>
-body {
-    font-size: 16px;
-    background-color: #f9f9f9;
-}
-header {
+.header {
     background-color: #333;
+    background-color: rgb(40, 110, 180);
     color: white;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
 }
 .header__title{

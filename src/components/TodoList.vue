@@ -1,5 +1,5 @@
 <template>
-        <ul>
+        <ul class="todo__ul">
             <TodoItem v-for="todo in todoList"
             :key="todo.id"
             :todo="todo"
@@ -32,6 +32,12 @@ function handleRemoveTodo(todoId) {
 
 
 <style scoped>
+
+.todo__ul{
+    width:90%;
+    margin: 0 auto;
+    padding: 0;
+}
 
 /* タブレットサイズ */
 @media (min-width: 600px) {
