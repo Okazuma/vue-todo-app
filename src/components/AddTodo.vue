@@ -9,10 +9,9 @@
 
 
 <script setup>
-import { ref, defineEmits } from "vue"
+import { ref } from "vue"
 
 const newTodo = ref('')
-
 // 親コンポーネントにタスクを追加するメソッドを渡す（emitを使う）
 const emit = defineEmits(['addTodo'])
 
@@ -30,10 +29,11 @@ function handleAddTodo() {
 <style scoped>
 .todo__form{
     width: 90%;
-    margin: 24px auto;
+    margin: 36px auto;
     display: flex;
     justify-content:space-between;
 }
+
 .todo__input{
     width: 72%;
     display: block;
@@ -44,6 +44,7 @@ function handleAddTodo() {
     border: 1px solid grey;
     border-radius: 4px;
 }
+
 .add__button{
     width:88px;
     height:48px;

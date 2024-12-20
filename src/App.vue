@@ -25,6 +25,8 @@ function handleUpdateTodoList(newTodoList) {
 function openModal(todoId) {
   const todo = todoList.value.find(todo => todo.id === todoId);
   selectedTodo.value = { ...todo }; // 編集する Todo をセット
+  console.log("選択されたTodo:", todo); // ここでidやtextが正しいか確認
+
   isModalOpen.value = true;
 }
 
@@ -46,6 +48,7 @@ function saveTodo(updatedTodo) {
       isModalOpen.value = false;
 }
 </script>
+
 
 
 <template>

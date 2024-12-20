@@ -12,7 +12,6 @@
 
 <script setup>
 import TodoItem from "./TodoItem.vue"
-import { defineProps } from "vue"
 
 // 親から渡されたtodoListを受け取る
 const props = defineProps({
@@ -38,7 +37,6 @@ function editTodo(todoId) {
 
 
 <style scoped>
-
 .todo__ul{
     width:90%;
     margin: 0 auto;

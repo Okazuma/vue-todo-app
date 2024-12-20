@@ -12,6 +12,7 @@
 
 
 
+
 <style scoped>
 .header {
     background-color: #333;
@@ -20,6 +21,7 @@
     padding: 0.5rem;
     text-align: center;
 }
+
 .header__title{
     font-size:36px;
 }
